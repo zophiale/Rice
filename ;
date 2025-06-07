@@ -28,6 +28,5 @@ require("lazy").setup({
 })
 
 EOF
-colorscheme catppuccin-macchiato
 "Open NeoTre :3
-"autocmd VimEnter  NeoTree action=show 
+autocmd VimEnter  NeoTree action=show 
