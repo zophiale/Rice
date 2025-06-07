@@ -6,6 +6,8 @@ if [ -d "$HOME/.config/nvim" ]; then
 
 		mv $HOME/.config/nvim{,.bak} # Moves config to a backup folder
 
+		rm -rf $HOME/.config/nvim
+
 		echo "[RICE] Moved $HOME/.config/nvim to $HOME/.config/nvim.bak"
 
 		mkdir $HOME/.config/nvim #remakes config folder
@@ -18,4 +20,5 @@ else
 
 	echo "[RICE] Created Nvim config folder"
 fi
-
+cp -r neovim/* $HOME/.config/nvim # Plaster in the stuffs
+echo "[RICE] Copied over configuration files"

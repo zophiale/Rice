@@ -10,15 +10,14 @@ fi
 
 
 # - Nvim Installation (latest) + configs -
-if [[ ! "$@" == *"-noVim"*  ]]; then
+if [[ ! "$@" == *"-noVim "*  ]]; then
 
 
-	# -StartNvim Config Init-
-	if  [[ ! "-noVimConf" == *"$@"* ]]; then
-	
-		./nvimconf.sh $*
+	# -StartNvim Config -  
+	if [[ ! "$@" == *"-noVimConf "* ]]; then 
+		./nvimconf.sh $* # run nvim configuration script
 	fi
-	# - End Neovim Config Init -
+	# - End Neovim Config -
 	NVIMP=$HOME/.config/nvim # nvim config dir
 	
 
@@ -26,7 +25,7 @@ if [[ ! "$@" == *"-noVim"*  ]]; then
 	wdir=$PWD # save where we're at
 
 	# - Start Nvim Installation -
-	if [ ! command -v nvim ];
+	if [ ! command -v nvim &> /dev/null ]; then
 		echo "[RICE] No Neovim, installing..."
 
 		git clone https://github.com/neovim/neovim.git /tmp/nvim # pull neovim from github 
@@ -47,9 +46,9 @@ if [[ ! "$@" == *"-noVim"*  ]]; then
 	fi
 	# - End Nvim Installation - 
 
-	# - Start Plaster Nvim Configuration -
-#	if [[ ! "$@" == *"-noVimConf"* ]]; then
-	# - End Plaster Nvim Configuration -
+
+
+
 
 
 else 
