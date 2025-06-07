@@ -30,8 +30,8 @@ if [ ! -d "$HOME/neovim" ]; then
 	#- Plug installation -
 #	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
  #      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-	cp init.vim $NVIMP/init.vim
-	cp lua $NVIMP/lua -r
+	cp ./init.vim $NVIMP/init.vim
+	cp ./lua $NVIMP/lua -r
 #	/usr/local/bin/nvim -c 'PlugInstall'
 	echo "[RICE] Installed: Neovim"
 else 
