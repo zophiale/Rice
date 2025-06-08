@@ -24,10 +24,21 @@ require("lazy").setup({
 
 		neotree=true
 	}
+},
+{
+  "nyoom-engineering/oxocarbon.nvim"
+  -- Add in any other configuration; 
+  --   event = foo, 
+  --   config = bar
+  --   end,
 }
 })
-
+--vim.opt.background = "dark"
+--vim.cmd.colorscheme = "oxocarbon"
+vim.api.nvim_create_autocmd("VimEnter", {
+	command = "Neotree action=show"
+})
 EOF
-colorscheme catppuccin-macchiato
-"Open NeoTre :3
-"autocmd VimEnter  NeoTree action=show 
+"colorscheme catppuccin-macchiato
+colorscheme oxocarbon
+
