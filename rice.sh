@@ -1,6 +1,11 @@
 # -- REALLY IMPORTANT --
-
-
+if [[ "$@" == *"-pullLocal"* ]]; then
+	./updateconfigs.sh
+	exit
+fi
+if [[ "$@" == *"-pullGithub"* ]]; then
+	git pull
+fi
 grep -qE "debian|ubuntu" /etc/os-release
 if [ $? -eq 0 ]; then
 	sudo apt-get install ninja-build gettext cmake curl build-essential
