@@ -3,8 +3,9 @@ lua << EOF
 
 require("config.lazy")
 require("lazy").setup({
---  {"nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate"},
-  {
+
+   {"nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate"},
+{
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v3.x",
   dependencies = {
@@ -31,14 +32,33 @@ require("lazy").setup({
   --   event = foo, 
   --   config = bar
   --   end,
+},
+{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+{
+    "mason-org/mason.nvim",
+    opts = {}
+},
+{
+	"neovim/nvim-lspconfig"
 }
 })
+require('lspconfig').clangd.setup({})
 --vim.opt.background = "dark"
 --vim.cmd.colorscheme = "oxocarbon"
-vim.api.nvim_create_autocmd("VimEnter", {
-	command = "Neotree action=show"
-})
+
 EOF
 "colorscheme catppuccin-macchiato
 colorscheme oxocarbon
+
+set termguicolors
+lua << EOF
+require("bufferline").setup{
+	options = {
+		separator_style = "slope"
+	}
+}
+vim.api.nvim_create_autocmd("VimEnter", {
+	command="Neotree action=show"
+})
+EOF
 
