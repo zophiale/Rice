@@ -6,6 +6,8 @@ if [[ "$@" == *"-pullLocal"* ]]; then
 fi
 if [[ "$@" == *"-pullGithub"* ]]; then
 	git pull
+	echo "[Rice] Updated from github!"
+	exit
 fi
 grep -qE "debian|ubuntu" /etc/os-release
 if [ $? -eq 0 ]; then
