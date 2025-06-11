@@ -9,11 +9,13 @@ if [[ "$@" == *"-pullGithub"* ]]; then
 	echo "[Rice] Updated from github!"
 	exit
 fi
+builder=0
 grep -qE "debian|ubuntu" /etc/os-release
 if [ $? -eq 0 ]; then
 	sudo apt-get install ninja-build gettext cmake curl build-essential
 else
 	sudo dnf -y install ninja-build cmake gcc make gettext curl glibc-gconv-extra
+	builder=1
 fi
 
 
@@ -62,3 +64,26 @@ else
 	echo "[RICE] Skipping: Neovim"
 fi
 # - End Nvim Installation + configs -
+
+
+
+# - Start ZAP + ZSH Install -
+
+if [[ ! "$@" == *"-noZSH"* ]]; then
+	if [ $builder -eq 1 ]; then
+		# Fedora
+		sudo dnf in zsh
+	else
+		sudo apt-get install zsh
+		#Likely apt?
+	fi
+
+	if [[ ! "$@" == *"-noDefaultShell"* ]]; then
+		chsh -s /bin/zsh # Set zsh to shell
+	fi
+	
+fi
+
+if [[ ! "$@" == *"-noZap"* ]]; then
+	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+fi
