@@ -5,22 +5,6 @@ require("config.lazy")
 require("lazy").setup({
 
    {"nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate"},
-{
-  "nvim-neo-tree/neo-tree.nvim",
-  branch = "v3.x",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-    "MunifTanjim/nui.nvim",
-    -- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
-  },
-  lazy = false, -- neo-tree will lazily load itself
-  ---@module "neo-tree"
-  ---@type neotree.Config?
-  opts = {
-    -- fill any relevant options here
-  },
-},
 { "catppuccin/nvim", name = "catppuccin", priority = 1000, opts = {
 
 		neotree=true
@@ -40,6 +24,29 @@ require("lazy").setup({
 },
 {
 	"neovim/nvim-lspconfig"
+},
+{
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+},
+{
+    'eddyekofo94/gruvbox-flat.nvim',
+    priority = 1000,
+    enabled = true,
+    config = function()
+        vim.cmd([[colorscheme gruvbox-flat]])
+    end,
+},
+{
+  "nvim-tree/nvim-tree.lua",
+  version = "*",
+  lazy = false,
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
+  config = function()
+    require("nvim-tree").setup {}
+  end,
 }
 })
 require('lspconfig').clangd.setup({})
@@ -48,17 +55,27 @@ require('lspconfig').clangd.setup({})
 
 EOF
 "colorscheme catppuccin-macchiato
-colorscheme oxocarbon
+"colorscheme oxocarbon
+set background=dark " or light if you want light mode
 
+"colorscheme gruvbox
 set termguicolors
 lua << EOF
-require("bufferline").setup{
+--require("bufferline").setup{
+--	options = {
+--separator_style = "slope"
+--	}
+--
+--}
+--vim.api.nvim_create_autocmd("VimEnter", {
+
+--command="Neotree action=show"
+
+--})
+
+require('lualine').setup {
 	options = {
-		separator_style = "slope"
+		theme = 'gruvbox-flat'
 	}
 }
-vim.api.nvim_create_autocmd("VimEnter", {
-	command="Neotree action=show"
-})
 EOF
-

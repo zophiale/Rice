@@ -28,5 +28,14 @@ A simple setup for all of her bullcrap :3
 -backup: backs up ANY overwritten config files {/nvim -> /nvim.bak}
 -noZSH: skips zsh installation
     -noDefaultShell: Disabled if above called, simply ignores setting default shell
--noZap: skips zap installation
+    -noZap: Disabled if above called, skips zap installation
+-includeZig: Installs zig
 ```
+
+# Todo
+
+---
+
+- Sway configs
+- fonts
+- generic app images

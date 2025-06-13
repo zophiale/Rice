@@ -76,14 +76,27 @@ if [[ ! "$@" == *"-noZSH"* ]]; then
 	else
 		sudo apt-get install zsh
 		#Likely apt?
+		# Will add arch shit later, im LAZY
 	fi
 
 	if [[ ! "$@" == *"-noDefaultShell"* ]]; then
 		chsh -s /bin/zsh # Set zsh to shell
 	fi
+
+
+	if [[ ! "$@" == *"-noZap"* ]]; then
+		zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+	fi
 	
 fi
 
-if [[ ! "$@" == *"-noZap"* ]]; then
-	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+
+# - Zig installation -
+# ZIG MUST BE CALLED TO BE INCLUDED
+
+
+if [[ "$@" == *"-includeZig"* ]]; then
+	sudo dnf in zig
 fi
+
+
