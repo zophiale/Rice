@@ -35,7 +35,7 @@ if [[ ! "$@" == *"-noVim "*  ]]; then
 	# - Start Nvim Installation -
 	echo "[RICE] Installing latest neovim..."
 
-	git clone https://github.com/neovim/neovim.git /tmp/nvim # pull neovim from github 
+	git clone https://github.com/neovim/neovim.git /tmp/nvim --depth 1 # pull neovim from github 
 	
 	cd /tmp/nvim # Move to directory
 	

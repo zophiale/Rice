@@ -50,6 +50,7 @@ require("lazy").setup({
 }
 })
 require('lspconfig').clangd.setup({})
+require('lspconfig').rust_analyzer.setup {}
 --vim.opt.background = "dark"
 --vim.cmd.colorscheme = "oxocarbon"
 
