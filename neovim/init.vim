@@ -80,3 +80,6 @@ require('lualine').setup {
 	}
 }
 EOF
+
+
+set rnu nu
