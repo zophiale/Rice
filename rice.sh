@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "[Rice] Welcome to Monarch Rice, this process moves really fast so don't expect to be able to read this"
 # -- REALLY IMPORTANT --
 if [[ "$@" == *"-pullLocal"* ]]; then
