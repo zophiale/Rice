@@ -29,14 +29,14 @@ require("lazy").setup({
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
 },
-{
-    'eddyekofo94/gruvbox-flat.nvim',
-    priority = 1000,
-    enabled = true,
-    config = function()
-        vim.cmd([[colorscheme gruvbox-flat]])
-    end,
-},
+--{
+    --'eddyekofo94/gruvbox-flat.nvim',
+    --priority = 1000,
+    --enabled = true,
+    --config = function()
+    --    vim.cmd([[colorscheme gruvbox-flat]])
+  --  end,
+--},
 {
   "nvim-tree/nvim-tree.lua",
   version = "*",
@@ -55,30 +55,28 @@ require('lspconfig').rust_analyzer.setup {}
 --vim.cmd.colorscheme = "oxocarbon"
 
 EOF
-"colorscheme catppuccin-macchiato
+colorscheme catppuccin-mocha
 "colorscheme oxocarbon
 set background=dark " or light if you want light mode
 
 "colorscheme gruvbox
 set termguicolors
 lua << EOF
---require("bufferline").setup{
---	options = {
---separator_style = "slope"
---	}
---
---}
---vim.api.nvim_create_autocmd("VimEnter", {
-
---command="Neotree action=show"
-
---})
 
 require('lualine').setup {
-	options = {
-		theme = 'gruvbox-flat'
+
+	options = 
+	{
+			theme="catppuccin-mocha"
 	}
+
 }
+vim.diagnostic.config({
+	virtual_text = true,
+	signs = true,
+	update_in_insert = false,
+	underline = true,
+})
 EOF
 
 
