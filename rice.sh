@@ -1,4 +1,5 @@
 #!/bin/bash
+
 echo "[Rice] Welcome to Monarch Rice, this process moves really fast so don't expect to be able to read this"
 # -- REALLY IMPORTANT --
 if [[ "$@" == *"-pullLocal"* ]]; then
@@ -34,26 +35,27 @@ if [[ ! "$@" == *"-noVim "*  ]]; then
 	wdir=$PWD # save where we're at
 
 	# - Start Nvim Installation -
-	echo "[RICE] Installing latest neovim..."
+	if [[ ! "$@" == *"-noInstallVim"* ]]; then
+		echo "[RICE] Installing latest neovim..."
 
-	git clone https://github.com/neovim/neovim.git /tmp/nvim --depth 1 # pull neovim from github 
+		git clone https://github.com/neovim/neovim.git /tmp/nvim --depth 1 # pull neovim from github 
 	
-	cd /tmp/nvim # Move to directory
+		cd /tmp/nvim # Move to directory
 	
-	make CMAKE_BUILD_TYPE=Release #configure installation
+		make CMAKE_BUILD_TYPE=Release #configure installation
 	
-	sudo make install &> /dev/null #install this girlie 
+		sudo make install &> /dev/null #install this girlie 
 	
-	echo "[RICE] Installed: Neovim"	
+		echo "[RICE] Installed: Neovim"	
 	
-	cd $wdir #leave neovim dir
+		cd $wdir #leave neovim dir
 		
-	rm -r /tmp/nvim # Perform cleanup
+		rm -r /tmp/nvim # Perform cleanup
 		
-	if [[ "$@" == *"-runVim"* ]] then
-		sh -c "nvim"
+		if [[ "$@" == *"-runVim"* ]] then
+			sh -c "nvim"
+		fi
 	fi
-
 	# - End Nvim Installation - 
 
 
